@@ -36,12 +36,6 @@ def get_birthday():
     next = next.replace(year=next.year + 1)
   return (next - today).days
 
-def get_tbirthday():
-  next = datetime.strptime(str(date.today().year) + "-" + tbirthday, "%Y-%m-%d")
-  if next < datetime.now():
-    next = next.replace(year=next.year + 1)
-  return (next - today).days
-
 def kqzl():
     conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
     params = urllib.parse.urlencode({'key':'a59bb78a1149fb897531644c84f7d262','area':'上海'})
@@ -77,6 +71,6 @@ client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature = get_weather()
-data = {"weather":{"value":wea, "color":get_random_color()},"temperature":{"value":temperature, "color":get_random_color()},"love_days":{"value":get_count()},"kqzl":{"value":kqzl(), "color":get_random_color()},"tq":{"value":tq(), "color":get_random_color()},"birthday_left":{"value":get_birthday(), "color":get_random_color()},"tbirthday_left":{"value":get_tbirthday(), "color":get_random_color()},"words":{"value":get_words(), "color":get_random_color()}}
+data = {"weather":{"value":wea, "color":get_random_color()},"temperature":{"value":temperature, "color":get_random_color()},"love_days":{"value":get_count()},"kqzl":{"value":kqzl(), "color":get_random_color()},"tq":{"value":tq(), "color":get_random_color()},"birthday_left":{"value":get_birthday(), "color":get_random_color()},"words":{"value":get_words(), "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)

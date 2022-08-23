@@ -36,6 +36,12 @@ def get_birthday():
     next = next.replace(year=next.year + 1)
   return (next - today).days
 
+def get_tbirthday():
+  next = datetime.strptime(str(date.today().year) + "-" + tbirthday, "%Y-%m-%d")
+  if next < datetime.now():
+    next = next.replace(year=next.year + 1)
+  return (next - today).days
+
 def kqzl():
     conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
     params = urllib.parse.urlencode({'key':'a59bb78a1149fb897531644c84f7d262','area':'上海'})
